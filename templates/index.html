@@ -79,7 +79,7 @@ function toRoman(n) {
 async function loadData() {
     const res = await fetch("/data");
     const data = await res.json();
-    let html = '<table class="w-full max-w-7xl mx-auto bg-white bg-opacity-80 shadow-2xl rounded text-2xl"><thead><tr class="bg-gray-300"><th>Место</th><th>Имя</th><th>єБаллы</th>{% if user == "admin" %}<th>Удалить</th>{% endif %}</tr></thead><tbody>';
+    let html = '<table class="w-full max-w-7xl mx-auto bg-white bg-opacity-80 shadow-2xl rounded text-2xl"><thead><tr class="bg-gray-300"><th>Место</th><th>Имя</th><th>Мэнджики</th>{% if user == "admin" %}<th>Удалить</th>{% endif %}</tr></thead><tbody>';
     data.forEach((item, i) => {
         const roman = toRoman(item.place);
         const colorClass = i === 0 ? "roman-gold" : i === 1 ? "roman-silver" : i === 2 ? "roman-bronze" : "";
