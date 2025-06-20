@@ -3,6 +3,7 @@ from fastapi.responses import HTMLResponse, RedirectResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from starlette.middleware.sessions import SessionMiddleware
+import os
 import sqlite3
 
 app = FastAPI()
@@ -10,7 +11,8 @@ app.add_middleware(SessionMiddleware, secret_key='verysecretkey')
 app.mount("/static", StaticFiles(directory="static"), name="static")
 templates = Jinja2Templates(directory="templates")
 
-DB_PATH = "/data/staff.db"
+DB_PATH = os.path.join("/tmp", "staff.db")
+
 
 def init_db():
     with sqlite3.connect(DB_PATH) as conn:
